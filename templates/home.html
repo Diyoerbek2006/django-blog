@@ -5,14 +5,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
+    <title>
+        {% if name %}
+            {{ name }}
+        {% else %}
+            MyBlog
+        {% endif %}
+    </title>
     <link rel="stylesheet" href="{% static "css/home.css" %}">
 </head>
 <body>
 
 <header>
     <div class="container nav">
-        <div class="logo">MyBlog</div>
+        <div class="logo">
+            {% if name %}
+                {{ name }}
+            {% else %}
+                MyBlog
+            {% endif %}
+        </div>
         <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#">About</a></li>
@@ -23,30 +35,28 @@
 
 <section class="hero">
     <div class="container">
-        <h1>Welcome to My Blog</h1>
+        <h1>Welcome to 
+            {% if name %}
+                {{ name }}
+            {% else %}
+                MyBlog
+            {% endif %}
+        </h1>
         <p>Sharing knowledge about programming, system design, and tech.</p>
     </div>
 </section>
 
 <section class="container">
     <div class="posts">
-        <div class="card">
-            <h3>Post Title 1</h3>
-            <p>Short description of the blog post. This is a preview.</p>
-            <a href="#">Read more →</a>
-        </div>
 
-        <div class="card">
-            <h3>Post Title 2</h3>
-            <p>Short description of the blog post. This is a preview.</p>
-            <a href="#">Read more →</a>
-        </div>
+        {% for post in posts %}
+            <div class="card">
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.content }}</p>
+                <a href="#">Read more →</a>
+            </div>
+        {% endfor %}
 
-        <div class="card">
-            <h3>Post Title 3</h3>
-            <p>Short description of the blog post. This is a preview.</p>
-            <a href="#">Read more →</a>
-        </div>
     </div>
 </section>
 
