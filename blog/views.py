@@ -4,4 +4,15 @@ from django.http import HttpRequest, HttpResponse
 
 def home_page(request: HttpRequest) -> HttpResponse:
     return render(request=request, template_name='home.html')
-    
+
+
+def articles_page(request: HttpRequest) -> HttpResponse:
+    return render(request=request, template_name='articles.html')
+
+
+def about_page(request: HttpRequest) -> HttpResponse:
+    return render(request=request, template_name='about.html')
+
+
+def contact_page(request: HttpRequest) -> HttpResponse:
+    return render(request=request, template_name='contact.html')
