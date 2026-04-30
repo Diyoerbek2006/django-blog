@@ -1,0 +1,143 @@
+/* =========================
+   ARTICLE CREATE PAGE
+========================= */
+
+.article-create {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* TITLE */
+.article-create h2 {
+    font-size: 2rem;
+    margin-bottom: var(--space-lg);
+    font-weight: 700;
+}
+
+/* FORM */
+.article-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+/* FORM GROUP */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* LABEL */
+.form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+/* INPUT / TEXTAREA / SELECT */
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    background: var(--color-bg);
+}
+
+/* FOCUS */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* TEXTAREA SPECIFIC */
+#content {
+    min-height: 250px;
+    resize: vertical;
+}
+
+/* INLINE GROUP */
+.form-group-inline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ACTION BUTTONS */
+.form-actions {
+    display: flex;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+/* PRIMARY BUTTON */
+.form-actions button {
+    padding: 12px 18px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* PUBLISH */
+.form-actions button[type="submit"] {
+    background: var(--color-primary);
+    color: white;
+}
+
+.form-actions button[type="submit"]:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+}
+
+/* SECONDARY */
+.form-actions .secondary {
+    background: transparent;
+    border: 1px solid var(--color-border);
+}
+
+.form-actions .secondary:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+/* =========================
+   UX IMPROVEMENTS
+========================= */
+
+/* INPUT HOVER */
+.form-group input:hover,
+.form-group textarea:hover,
+.form-group select:hover {
+    border-color: var(--color-primary);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+    .article-create {
+        padding: 0 var(--space-md);
+    }
+
+    .article-create h2 {
+        font-size: 1.6rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+    }
+}

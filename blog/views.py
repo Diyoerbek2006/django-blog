@@ -28,3 +28,14 @@ def about_page(request: HttpRequest) -> HttpResponse:
 
 def contact_page(request: HttpRequest) -> HttpResponse:
     return render(request=request, template_name='contact.html')
+
+
+def add_article_page(request: HttpRequest) -> HttpResponse:
+    if request.method == 'GET':
+        return render(request=request, template_name='add.html')
+    elif request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        db.add_article(title=title, content=content)
+        return render(request=request, template_name='add.html', context={'message': 'Article added successfully!'})
+    

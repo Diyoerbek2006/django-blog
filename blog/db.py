@@ -29,3 +29,14 @@ class Database:
             if article.get("slug") == slug:
                 return article
         return None
+
+    def add_article(self, title, content):
+        articles = self.get_articles()
+        new_article = {
+            "id": len(articles) + 1,
+            "title": title,
+            "content": content,
+            "slug": title.lower().replace(" ", "-")
+        }
+        articles.append(new_article)
+        self.write({"articles": articles})

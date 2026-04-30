@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/add.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="container article-create">
+
+    <!-- Message -->
+    {% if message %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endif %}
+
+    <h2>Create New Article</h2>
+
+    <form method="post" class="article-form">
+        {% csrf_token %}
+
+        <!-- TITLE -->
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" placeholder="Enter article title..." required>
+        </div>
+
+        <!-- SLUG -->
+        <div class="form-group">
+            <label for="slug">Slug</label>
+            <input type="text" id="slug" name="slug" placeholder="auto-generated-or-manual">
+        </div>
+
+        <!-- EXCERPT -->
+        <div class="form-group">
+            <label for="excerpt">Excerpt</label>
+            <textarea id="excerpt" name="excerpt" rows="3" placeholder="Short summary..."></textarea>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea id="content" name="content" rows="12" placeholder="Write your article..."></textarea>
+        </div>
+
+        <!-- CATEGORY -->
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category">
+                <option>Programming</option>
+                <option>Backend</option>
+                <option>System Design</option>
+                <option>DevOps</option>
+            </select>
+        </div>
+
+        <!-- TAGS -->
+        <div class="form-group">
+            <label for="tags">Tags (comma separated)</label>
+            <input type="text" id="tags" name="tags" placeholder="python, django, api">
+        </div>
+
+        <!-- FEATURED -->
+        <div class="form-group-inline">
+            <label>
+                <input type="checkbox" name="featured">
+                Mark as featured
+            </label>
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="form-actions">
+            <button type="submit">Publish Article</button>
+            <button type="button" class="secondary">Save Draft</button>
+        </div>
+
+    </form>
+
+</div>
+{% endblock content %}
