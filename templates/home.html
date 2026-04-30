@@ -12,7 +12,7 @@
         <div class="container">
             <h2>Welcome to My Personal Blog</h2>
             <p>Sharing insights on programming, system design, and real-world engineering.</p>
-            <a href="#" class="cta-button">Read Latest Articles</a>
+            <a href="{% url "articles" %}" class="cta-button">Read Latest Articles</a>
         </div>
     </section>
 
@@ -23,23 +23,13 @@
         <!-- ARTICLE -->
         <article class="content">
 
-            <section class="post-preview">
-                <h2>Post Title 1</h2>
-                <p>Short description of the article. This should attract the reader to continue reading.</p>
-                <a href="#">Read more →</a>
-            </section>
-
-            <section class="post-preview">
-                <h2>Post Title 2</h2>
-                <p>Another article preview with concise explanation of the content.</p>
-                <a href="#">Read more →</a>
-            </section>
-
-            <section class="post-preview">
-                <h2>Post Title 3</h2>
-                <p>Short and clear summary to improve CTR and engagement.</p>
-                <a href="#">Read more →</a>
-            </section>
+            {% for article in articles %}
+                <section class="post-preview">
+                    <h2>{{ article.title }}</h2>
+                    <p>{{ article.description }}</p>
+                    <a href="{% url "article_details" slug=article.slug %}">Read more →</a>
+                </section>
+            {% endfor %}
 
         </article>
 
@@ -55,9 +45,9 @@
             <section class="categories-widget">
                 <h3>Categories</h3>
                 <ul>
-                    <li><a href="#">Programming</a></li>
-                    <li><a href="#">System Design</a></li>
-                    <li><a href="#">DevOps</a></li>
+                    <li><a href="{% url "articles" %}">Programming</a></li>
+                    <li><a href="{% url "articles" %}">System Design</a></li>
+                    <li><a href="{% url "articles" %}">DevOps</a></li>
                 </ul>
             </section>
 
