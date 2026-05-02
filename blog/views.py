@@ -19,8 +19,10 @@ def articles_page(request: HttpRequest) -> HttpResponse:
     if form.is_valid():
         data = form.cleaned_data
 
-        articles = db.find_articles_by_title(data['q'])
+        print(data)
         
+        articles = db.find_articles_by_title(data['q'])
+
         return render(request=request, template_name='articles.html', context={'articles': articles})
     articles = db.get_articles()
     return render(request=request, template_name='articles.html', context={'articles': articles, 'form': form})
